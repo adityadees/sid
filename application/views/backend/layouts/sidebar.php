@@ -31,16 +31,12 @@
                     <a href="<?= base_url()?>index.php/dash/slider"><i class="fa fa-sliders"></i> <span class="nav-label">Slider</span></a>
                 </li>
 
-                <li <?php if($title=='Kamar' || $title == 'Penghuni Penginapan'){echo "class='active'"; } else {}?>>
-                    <a href="#"><i class="fa fa-building"></i> <span class="nav-label"> Penginapan</span> <span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level collapse">
-                        <li <?php if($title=='Kamar'){echo "class='active'"; } else {}?>>
-                            <a href="<?= base_url('index.php/dash/penginapan/kamar')?>">Daftar Kamar</a>
-                        </li>
-                        <li <?php if($title=='Penghuni Penginapan'){echo "class='active'"; } else {}?>>
-                            <a href="<?= base_url('index.php/dash/penginapan/daftar-penghuni')?>">Daftar Penghuni</a>
-                        </li>
-                    </ul>
+                <li <?php if($title=='Galeri'){echo "class='active'"; } else {}?>>
+                    <a href="<?= base_url()?>index.php/dash/galeri"><i class="fa fa-image"></i> <span class="nav-label">Galeri</span></a>
+                </li>
+
+                <li <?php if($title=='Produk'){echo "class='active'"; } else {}?>>
+                    <a href="<?= base_url()?>index.php/dash/produk"><i class="fa fa-stack"></i> <span class="nav-label">Produk</span></a>
                 </li>
 
                 <li <?php if($title=='User'){echo "class='active'"; } else {}?>>

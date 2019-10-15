@@ -21,12 +21,12 @@
         <div class="header-inner">
             <div class="container">
 
-                <div id="logo">
+              <!--   <div id="logo">
                     <a href="<?= base_url() ?>" class="logo" data-src-dark="<?= base_url('assets/images/logo/logo.png') ?>">
                         <img id="logomain" src="<?= base_url('assets/images/logo/logo.png') ?>" alt="BPU">
                     </a>
                 </div>
-
+ -->
 
                 <div id="search">
                     <!--     <div id="search-logo"><img id="logo-search" src="<?= base_url('assets/images/logo/logo.png') ?>" alt="BPU"></div>  -->
@@ -52,25 +52,27 @@
                 </div>
 
 
-                <div id="mainMenu" class="green">
-                    <div class="container">
+                <div id="mainMenu" class="green" >
+                    <div class="container" >
                         <nav>
                             <ul>
-                                <li><a href="<?= base_url(); ?>">Home</a></li> 
+                                <li><a href="<?= base_url(); ?>"  style="color:#949292">Home</a></li> 
                                 <li  class="dropdown"> 
-                                    <a href="#">Artikel</a>
+                                    <a href="#"  style="color:#949292">Artikel</a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="<?= base_url('berita')?>">Berita</a></li>
-                                        <li><a href="<?= base_url('info')?>">Informasi</a></li>
+                                        <li><a href="<?= base_url('berita')?>"  style="color:#949292">Berita</a></li>
+                                        <li><a href="<?= base_url('info')?>"  style="color:#949292">Informasi</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="<?= base_url('index.php/organisasi'); ?>">Organisasi</a></li>
-                                <li  class="dropdown"> 
-                                    <a href="#">Produk</a>
+                                <li><a href="<?= base_url('index.php/organisasi'); ?>"  style="color:#949292">Organisasi</a></li>
+                                <li><a href="<?= base_url('index.php/produk'); ?>"  style="color:#949292">Produk</a></li>
+                              <!--   <li  class="dropdown"> 
+                                    <a href="#"  style="color:#949292">Produk</a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="#">Topbar</a></li>
+                                        <li><a href="#"  style="color:#949292">Topbar</a></li>
                                     </ul>
-                                </li>
+                                </li> -->
+                                <li><a href="<?= base_url('index.php/galeri'); ?>"  style="color:#949292">Galeri</a></li>
                             </nav>
                         </div>
                     </div>

@@ -11,7 +11,7 @@
         </ol>
     </div>
     <div class="col-lg-2">
-        <a href="#" data-toggle="modal" data-target="#slider_add" class="btn btn-primary mt-4">Tambah Data</a>
+        <a href="#" data-toggle="modal" data-target="#produk_add" class="btn btn-primary mt-4">Tambah Data</a>
     </div>
 </div>
 
@@ -35,36 +35,36 @@
                             <thead>
                                 <tr>
                                     <th class="text-center">Img</th>
-                                    <th>Judul</th>
-                                    <th>Deskripsi</th>
+                                    <th class="text-center">Nama Produk</th>
+                                    <th class="text-center">Deskripsi Produk</th>
                                     <th class="text-center">#</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php $no=0; 
-                                foreach($slider_grab as $i) : $no++;
+                                foreach($produk_grab as $i) : $no++;
                                     ?>
                                     <tr class="gradeX">
                                         <td class="text-center">
-                                            <img src="<?= base_url()?>assets/images/slider/<?= $i->slider_img;?>" class="img-thumbnail" style="max-height: 120px"/>
+                                            <img src="<?= base_url()?>uploads/produk/<?= $i->produk_cover;?>" class="img-thumbnail" style="max-height: 120px"/>
                                         </td>
                                         <td style="vertical-align: middle;">
-                                            <?= $i->slider_judul;?>
+                                            <?= $i->produk_nama;?>
                                         </td>
-                                        <td>
-                                            <?= $i->slider_deskripsi;?>
+                                        <td style="vertical-align: middle;">
+                                            <?= $i->produk_desc;?>
                                         </td>
-                                        <td>
+                                        <td style="vertical-align: middle;text-align: center">
                                             <div class="btn-group">
                                                 <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle">Action</button>
                                                 <ul class="dropdown-menu">
                                                     <li>
-                                                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#slider_edit"  onclick="fedit('<?= $i->slider_id ?>','<?= $i->slider_judul ?>', '<?= $i->slider_deskripsi  ?>','<?= $i->slider_img ?>')">
+                                                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#produk_edit"  onclick="fedit('<?= $i->produk_id ?>','<?= $i->produk_nama ?>', '<?= $i->produk_desc  ?>','<?= $i->produk_cover ?>')">
                                                             Edit
                                                         </a>
                                                     </li>
                                                     <li>
-                                                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#slider_delete"  onclick="fdelete('<?= $i->slider_id ?>','<?= $i->slider_judul ?>','<?= $i->slider_img ?>')">
+                                                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#produk_delete"  onclick="fdelete('<?= $i->produk_id ?>','<?= $i->produk_nama ?>','<?= $i->produk_cover ?>')">
                                                             Delete
                                                         </a>
                                                     </li>
@@ -82,31 +82,33 @@
     </div>
 </div>
 
-<div class="modal inmodal" id="slider_add" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-        <form action="<?= base_url() ?>index.php/backend/slider/create" method="POST" accept-charset="utf-8" enctype="multipart/form-data">
+<div class="modal inmodal" id="produk_add" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <form action="<?= base_url() ?>index.php/backend/produk/create" method="POST" accept-charset="utf-8" enctype="multipart/form-data">
             <div class="modal-content animated bounceInRight">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                 </div>
                 <div class="modal-body">
-                    <div class="form-group row">
-                        <label for="inputEmail3" class="col-sm-3 col-form-label">Judul</label>
-                        <div class="col-sm-9">
-                            <input type="text" name="judul" class="form-control" required="">
-                        </div>
+
+                    <div class="form-group ">
+                        <label for="inputEmail3" class="col-form-label">Nama Produk</label>
+                        <input type="text" name="judul" class="form-control" required="">
                     </div>
-                    <div class="form-group row">
-                        <label for="inputEmail3" class="col-sm-3 col-form-label">Link</label>
-                        <div class="col-sm-9">
-                            <textarea class="form-control" name="desk"></textarea>
-                        </div>
+                    <div class="form-group ">
+                        <label for="inputEmail3" class="col-form-label">Kategori Produk</label>
+                        <select class="select2_demo_1 form-control" name="kategori">
+                            <option value="songket">Songket</option>
+                            <option value="pisau">Pisau</option>
+                        </select>
                     </div>
-                    <div class="form-group row">
-                        <label for="inputEmail3" class="col-sm-3 col-form-label">Image</label>
-                        <div class="col-sm-9">
-                            <input type="file" name="filefoto" class="form-control" required="" accept=".jpg,.jpeg,.png">
-                        </div>
+                    <div class="form-group ">
+                        <label for="inputEmail3" class="col-form-label">Deskripsi Produk</label>
+                        <textarea class="summernote" name="isi" ></textarea>
+                    </div>
+                    <div class="form-group ">
+                        <label for="inputEmail3" class="col-form-label">Image</label>
+                        <input type="file" name="filefoto" class="form-control" required="" accept=".jpg,.jpeg,.png">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -118,9 +120,9 @@
     </div>
 </div>
 
-<div class="modal inmodal" id="slider_edit" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal inmodal" id="produk_edit" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
-        <form action="<?= base_url() ?>index.php/backend/slider/edit" method="POST" accept-charset="utf-8" enctype="multipart/form-data">
+        <form action="<?= base_url() ?>index.php/backend/produk/edit" method="POST" accept-charset="utf-8" enctype="multipart/form-data">
             <div class="modal-content animated bounceInRight">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
@@ -157,9 +159,9 @@
 </div>
 
 
-<div class="modal inmodal" id="slider_delete" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal inmodal" id="produk_delete" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
-        <form action="<?= base_url() ?>index.php/backend/slider/delete" method="POST" accept-charset="utf-8" enctype="multipart/form-data">
+        <form action="<?= base_url() ?>index.php/backend/produk/delete" method="POST" accept-charset="utf-8" enctype="multipart/form-data">
             <div class="modal-content animated bounceInRight">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
@@ -171,7 +173,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                    <input type="submit" name="slider_delete" value="Delete" class="btn btn-primary">
+                    <input type="submit" name="produk_delete" value="Delete" class="btn btn-primary">
                 </div>
             </div>
         </form>

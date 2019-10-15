@@ -1,3 +1,4 @@
+<div></div>
 <section id="page-title"  class="background-overlay-dark" data-parallax-image="<?= base_url('assets/images/bg/1.jpg')?>">
     <div class="container">
         <div class="page-title">

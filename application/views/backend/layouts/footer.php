@@ -66,20 +66,11 @@
                     }
 
 
-                });
-            </script>
-
-            <script>
-                $(document).ready(function () {
                     $('.i-checks').iCheck({
                         checkboxClass: 'icheckbox_square-green',
                         radioClass: 'iradio_square-green',
                     });
-                });
-            </script>
 
-            <script>
-                $(document).ready(function(){
                     $('.dataTables-example').DataTable({
                         pageLength: 10,
                         responsive: true,
@@ -88,63 +79,35 @@
                     });
 
 
-                /*    $('.dataTables-examplez').DataTable({
-                        pageLength: 25,
-                        responsive: true,
-                        dom: '<"html5buttons"B>lTfgitp',
-                        buttons: [
-                        { extend: 'copy'},
-                        {extend: 'csv'},
-                        {extend: 'excel', title: 'ExampleFile'},
-                        {extend: 'pdf', title: 'ExampleFile'},
-
-                        {extend: 'print',
-                        customize: function (win){
-                            $(win.document.body).addClass('white-bg');
-                            $(win.document.body).css('font-size', '10px');
-
-                            $(win.document.body).find('table')
-                            .addClass('compact')
-                            .css('font-size', 'inherit');
+                    $('.confirmation').click(function(e) {
+                        e.preventDefault();
+                        var linkURL = $(this).attr("href");
+                        var jdl = $(this).attr("title");
+                        warnBeforeRedirect(linkURL,jdl);
+                    });
+                    function warnBeforeRedirect(linkURL,jdl) {
+                        swal({
+                            title: "Are you sure?",
+                            text: "Anda akan menghapus data " + jdl, 
+                            type: "warning",
+                            showCancelButton: true,
+                            confirmButtonColor: "#DD6B55",
+                            confirmButtonText: "Yes, delete it!",
+                            cancelButtonText: "No, cancel plx!",
+                            closeOnConfirm: false,
+                            closeOnCancel: false
+                        }, function(isConfirm) {
+                          if (isConfirm) {
+                              window.location.href = linkURL;
+                              swal("Deleted!", "Your imaginary file has been deleted.", "success");
+                          } else {
+                            swal("Cancelled", "Your imaginary file is safe :)", "error");
                         }
+                    });
                     }
-                    ]
-
-                });*/
-
-            });
-        </script>
-
-        <script>
-            $(document).ready(function () {
-                $('.confirmation').click(function(e) {
-                    e.preventDefault();
-                    var linkURL = $(this).attr("href");
-                    var jdl = $(this).attr("title");
-                    warnBeforeRedirect(linkURL,jdl);
+                    
                 });
-                function warnBeforeRedirect(linkURL,jdl) {
-                    swal({
-                        title: "Are you sure?",
-                        text: "Anda akan menghapus data " + jdl, 
-                        type: "warning",
-                        showCancelButton: true,
-                        confirmButtonColor: "#DD6B55",
-                        confirmButtonText: "Yes, delete it!",
-                        cancelButtonText: "No, cancel plx!",
-                        closeOnConfirm: false,
-                        closeOnCancel: false
-                    }, function(isConfirm) {
-                      if (isConfirm) {
-                          window.location.href = linkURL;
-                          swal("Deleted!", "Your imaginary file has been deleted.", "success");
-                      } else {
-                        swal("Cancelled", "Your imaginary file is safe :)", "error");
-                    }
-                });
-                }
-            });
-        </script>
+            </script>
 
-    </body>
-    </html>
+        </body>
+        </html>

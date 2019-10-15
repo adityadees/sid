@@ -2,7 +2,7 @@
 
 class MY_Controller extends CI_Controller
 {
-	public $title 		= 'BPU - Universitas Sriwijaya';
+	public $title 		= 'SID - Limbang Jaya';
 	public $count_visitor;
 	public function __construct()
 	{

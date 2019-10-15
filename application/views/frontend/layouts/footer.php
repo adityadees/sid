@@ -4,9 +4,9 @@
  			<div class="row">
  				<div class="col-lg-5">
  					<div class="widget">
- 						<div class="widget-title">SID</div>
+ 						<div class="widget-title">Desa Limbang Jaya</div>
  						<p class="mb-5">
- 							Sistem Informasi Desa
+ 							Desa Limbang Jaya berada di :<br> Kecamatan Tanjung Batu, <br>Kabupaten Ogan Ilir, Sumatra Selatan, Indonesia.
  						</p>
  						<a href="#" class="btn btn-inverted">Contact Us</a>
  					</div>
@@ -48,7 +48,7 @@
  	<div class="copyright-content">
  		<div class="container">
  			<div class="copyright-text text-center">
- 				<a href="<?= base_url();?>">SID</a> | <a href="#">Sistem Informasi Desa</a>
+ 				<a href="<?= base_url();?>">SID</a> | <a href="#">Sistem Informasi Desa Lembung Jaya</a>
  				<br>
  				&copy; 2019
  			</div>

@@ -1,11 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script allowed');
-class Slider extends MY_Controller{
+class Produk extends MY_Controller{
 
 	public function __construct(){
 		parent::__construct();
 		$this->module = 'backend';
-		$this->load->model('slider_m');
+		$this->load->model('produk_m');
 		$this->data['token'] = $this->session->userdata('token');
 		if (!isset($this->data['token']))
 		{
@@ -24,37 +24,39 @@ class Slider extends MY_Controller{
 	}
 
 	public function index(){
-		$this->data['slider_grab'] = $this->slider_m->get();
-		$this->data['title']    = 'Slider';
-		$this->data['content']  = 'slider/slider';
+		$this->data['produk_grab'] = $this->produk_m->get();
+		$this->data['title']    = 'Produk';
+		$this->data['content']  = 'produk/produk';
 		$this->template($this->data, $this->module);
 	}
 
 	public function create(){
 		$judul = $this->post('judul');
-		$desk = $this->post('desk');
-		$upspp = $this->go_upload('filefoto', 'assets/images/slider', 'jpeg|jpg|png', TRUE);
+		$kategori = $this->post('kategori');
+		$isi = $this->post('isi');
+		$upspp = $this->go_upload('filefoto', 'uploads/produk', 'jpeg|jpg|png', TRUE);
 		if($upspp['status'] != 'OK'){
 			$this->flashmsg($upspp['response'], 'error');
-			redirect('dash/slider');
+			redirect('dash/produk');
 		}
 
 		$dslide = [ 
-			'slider_judul'	=> $judul,
-			'slider_deskripsi'	=> $desk,
-			'slider_img'	=> $upspp['filename'],
+			'produk_nama'	=> $judul,
+			'produk_kategori'	=> $kategori,
+			'produk_desc'	=> $kategori,
+			'produk_cover'	=> $upspp['filename'],
 		];
 
 		$this->db->trans_begin();
-		$ck = $this->slider_m->insert($dslide);
+		$ck = $this->produk_m->insert($dslide);
 		$this->db->trans_complete();
 		if ($this->db->trans_status() === FALSE){
 			$this->db->trans_rollback();
 			$this->flashmsg('Gagal menambah data', 'error');
-			redirect('dash/slider');
+			redirect('dash/produk');
 		} else {
 			$this->flashmsg('Berhasil menambah data', 'success');
-			redirect('dash/slider');
+			redirect('dash/produk');
 		}
 	}
 
@@ -67,38 +69,38 @@ class Slider extends MY_Controller{
 
 		if ($_FILES['filefoto']['name'] == '') {
 			$dslide = [ 
-				'slider_judul'	=> $judul,
-				'slider_deskripsi'	=> $desk,
+				'produk_judul'	=> $judul,
+				'produk_deskripsi'	=> $desk,
 			];
 		} else {
-			if(file_exists('assets/images/slider/'.$oldimg)) {
-				unlink('assets/images/slider/'.$oldimg);
+			if(file_exists('assets/images/produk/'.$oldimg)) {
+				unlink('assets/images/produk/'.$oldimg);
 			}
 
-			$upspp = $this->go_upload('filefoto', 'assets/images/slider', 'jpeg|jpg|png', TRUE);
+			$upspp = $this->go_upload('filefoto', 'assets/images/produk', 'jpeg|jpg|png', TRUE);
 			if($upspp['status'] != 'OK'){
 				$this->flashmsg($upspp['response'], 'error');
-				redirect('dash/slider');
+				redirect('dash/produk');
 			}
 
 			$dslide = [ 
-				'slider_judul'	=> $judul,
-				'slider_deskripsi'	=> $desk,
-				'slider_img'	=> $upspp['filename'],
+				'produk_judul'	=> $judul,
+				'produk_deskripsi'	=> $desk,
+				'produk_img'	=> $upspp['filename'],
 			];
 		}
 
 
 		$this->db->trans_begin();
-		$ck = $this->slider_m->update($id,$dslide);
+		$ck = $this->produk_m->update($id,$dslide);
 		$this->db->trans_complete();
 		if ($this->db->trans_status() === FALSE){
 			$this->db->trans_rollback();
 			$this->flashmsg('Gagal merubah data', 'error');
-			redirect('dash/slider');
+			redirect('dash/produk');
 		} else {
 			$this->flashmsg('Berhasil merubah data', 'success');
-			redirect('dash/slider');
+			redirect('dash/produk');
 		}
 	}
 
@@ -108,20 +110,20 @@ class Slider extends MY_Controller{
 		$id = $this->post('id');
 		$oldimg = $this->post('oldimg');
 
-		if(file_exists('assets/images/slider/'.$oldimg)) {
-			unlink('assets/images/slider/'.$oldimg);
+		if(file_exists('assets/images/produk/'.$oldimg)) {
+			unlink('assets/images/produk/'.$oldimg);
 		}
 
 		$this->db->trans_begin();
-		$ck = $this->slider_m->delete($id);
+		$ck = $this->produk_m->delete($id);
 		$this->db->trans_complete();
 		if ($this->db->trans_status() === FALSE){
 			$this->db->trans_rollback();
 			$this->flashmsg('Gagal menghapus data', 'error');
-			redirect('dash/slider');
+			redirect('dash/produk');
 		} else {
 			$this->flashmsg('Berhasil menghapus data', 'success');
-			redirect('dash/slider');
+			redirect('dash/produk');
 		}
 	}
 

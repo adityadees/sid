@@ -11,7 +11,7 @@
         </ol>
     </div>
     <div class="col-lg-2">
-        <a href="#" data-toggle="modal" data-target="#slider_add" class="btn btn-primary mt-4">Tambah Data</a>
+        <a href="#" data-toggle="modal" data-target="#galeri_add" class="btn btn-primary mt-4">Tambah Data</a>
     </div>
 </div>
 
@@ -30,51 +30,23 @@
                     </div>
                 </div>
                 <div class="ibox-content">
-                    <div class="table-responsive">
-                        <table class="table table-striped table-bordered table-hover dataTables-example" >
-                            <thead>
-                                <tr>
-                                    <th class="text-center">Img</th>
-                                    <th>Judul</th>
-                                    <th>Deskripsi</th>
-                                    <th class="text-center">#</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php $no=0; 
-                                foreach($slider_grab as $i) : $no++;
-                                    ?>
-                                    <tr class="gradeX">
-                                        <td class="text-center">
-                                            <img src="<?= base_url()?>assets/images/slider/<?= $i->slider_img;?>" class="img-thumbnail" style="max-height: 120px"/>
-                                        </td>
-                                        <td style="vertical-align: middle;">
-                                            <?= $i->slider_judul;?>
-                                        </td>
-                                        <td>
-                                            <?= $i->slider_deskripsi;?>
-                                        </td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle">Action</button>
-                                                <ul class="dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#slider_edit"  onclick="fedit('<?= $i->slider_id ?>','<?= $i->slider_judul ?>', '<?= $i->slider_deskripsi  ?>','<?= $i->slider_img ?>')">
-                                                            Edit
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#slider_delete"  onclick="fdelete('<?= $i->slider_id ?>','<?= $i->slider_judul ?>','<?= $i->slider_img ?>')">
-                                                            Delete
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                <?php endforeach; ?>
-                            </tbody>
-                        </table>
+
+                    <div class="lightBoxGallery">
+                        <?php foreach($galeri as $i):?>
+                            <a href="<?= base_url('uploads/galeri/'.$i->galeri_foto)?>" data-gallery="">
+                                <img src="<?= base_url('uploads/galeri/'.$i->galeri_foto)?>" style="width: 100px;height: 100px">
+                            </a>
+                        <?php endforeach; ?>
+                        <div id="blueimp-gallery" class="blueimp-gallery">
+                            <div class="slides"></div>
+                            <h3 class="title"></h3>
+                            <a class="prev">‹</a>
+                            <a class="next">›</a>
+                            <a class="close">×</a>
+                            <a class="play-pause"></a>
+                            <ol class="indicator"></ol>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -82,31 +54,20 @@
     </div>
 </div>
 
-<div class="modal inmodal" id="slider_add" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal inmodal" id="galeri_add" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
-        <form action="<?= base_url() ?>index.php/backend/slider/create" method="POST" accept-charset="utf-8" enctype="multipart/form-data">
+        <form action="<?= base_url() ?>index.php/backend/galeri/create" method="POST" accept-charset="utf-8" enctype="multipart/form-data">
             <div class="modal-content animated bounceInRight">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                 </div>
                 <div class="modal-body">
                     <div class="form-group row">
-                        <label for="inputEmail3" class="col-sm-3 col-form-label">Judul</label>
-                        <div class="col-sm-9">
-                            <input type="text" name="judul" class="form-control" required="">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputEmail3" class="col-sm-3 col-form-label">Link</label>
-                        <div class="col-sm-9">
-                            <textarea class="form-control" name="desk"></textarea>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputEmail3" class="col-sm-3 col-form-label">Image</label>
-                        <div class="col-sm-9">
-                            <input type="file" name="filefoto" class="form-control" required="" accept=".jpg,.jpeg,.png">
-                        </div>
+                        <div class="custom-file">
+                            <input id="logo" type="file" name="filefoto" class="custom-file-input" required="" accept=".jpg,.jpeg,.png">
+                            <label for="logo" class="custom-file-label">Choose file...</label>
+                            <span class="text-danger">* Format harus berupa .jpg atau .png</span>
+                        </div> 
                     </div>
                 </div>
                 <div class="modal-footer">
