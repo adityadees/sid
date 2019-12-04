@@ -36,7 +36,7 @@
                 </li>
 
                 <li <?php if($title=='Produk'){echo "class='active'"; } else {}?>>
-                    <a href="<?= base_url()?>index.php/dash/produk"><i class="fa fa-stack"></i> <span class="nav-label">Produk</span></a>
+                    <a href="<?= base_url()?>index.php/dash/produk"><i class="fa fa-cube"></i> <span class="nav-label">Produk</span></a>
                 </li>
 
                 <li <?php if($title=='User'){echo "class='active'"; } else {}?>>

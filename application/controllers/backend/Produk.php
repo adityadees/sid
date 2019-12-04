@@ -24,15 +24,30 @@ class Produk extends MY_Controller{
 	}
 
 	public function index(){
-		$this->data['produk_grab'] = $this->produk_m->get();
+		$this->data['produk_grab'] = $this->produk_m->get_by_order('produk_id','desc');
 		$this->data['title']    = 'Produk';
 		$this->data['content']  = 'produk/produk';
 		$this->template($this->data, $this->module);
 	}
-
 	public function create(){
-		$judul = $this->post('judul');
+		$this->data['title']    = 'Tambah Produk';
+		$this->data['content']  = 'produk/create';
+		$this->template($this->data, $this->module);
+	}
+	public function detail(){
+		$uri = $this->uri->segment(4);
+		$this->data['produk_grab'] = $this->produk_m->get(['produk_id'=>$uri]);
+		$this->data['title']    = 'Tambah Produk';
+		$this->data['content']  = 'produk/detail';
+		$this->template($this->data, $this->module);
+	}
+
+	public function add(){
+		$nama = $this->post('nama');
 		$kategori = $this->post('kategori');
+		$warna = $this->post('warna');
+		$bahan = $this->post('bahan');
+		$ukuran = $this->post('ukuran');
 		$isi = $this->post('isi');
 		$upspp = $this->go_upload('filefoto', 'uploads/produk', 'jpeg|jpg|png', TRUE);
 		if($upspp['status'] != 'OK'){
@@ -41,9 +56,12 @@ class Produk extends MY_Controller{
 		}
 
 		$dslide = [ 
-			'produk_nama'	=> $judul,
+			'produk_nama'	=> $nama,
 			'produk_kategori'	=> $kategori,
-			'produk_desc'	=> $kategori,
+			'produk_warna'	=> $warna,
+			'produk_bahan'	=> $bahan,
+			'produk_ukuran'	=> $ukuran,
+			'produk_desc'	=> $isi,
 			'produk_cover'	=> $upspp['filename'],
 		];
 

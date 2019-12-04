@@ -19,7 +19,7 @@
         <div>
             <div>
                 <h1 class="logo-name">
-                    <img src="<?= base_url('assets/images/logo/logo.png')?>" width="300px">
+                    <img src="<?= base_url('assets/images/logo/a.png')?>" width="300px">
                 </h1>
             </div>
             <h3>Welcome to Admin Panel</h3>
