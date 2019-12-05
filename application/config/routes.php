@@ -60,6 +60,7 @@ $route['dash/artikel'] = 'backend/artikel';
 $route['dash/produk'] = 'backend/produk';
 $route['dash/produk/create'] = 'backend/produk/create';
 $route['dash/produk/detail/(:any)'] = 'backend/produk/detail/$1';
+$route['dash/produk/edit/(:any)'] = 'backend/produk/edit/$1';
 $route['dash/artikel/create'] = 'backend/artikel/create';
 $route['dash/artikel/detail/(:any)'] = 'backend/artikel/detail/$1';
 $route['dash/artikel/edit/(:any)'] = 'backend/artikel/edit/$1';
@@ -78,7 +79,7 @@ $route['berita/p/(:any)'] = 'frontend/artikel/news/$1';
 $route['organisasi'] = 'frontend/informasi/organisasi';
 $route['galeri'] = 'frontend/galeri';
 $route['produk'] = 'frontend/produk';
-$route['p/detail'] = 'frontend/produk/ajax_page';
+$route['p/detail/(:any)'] = 'frontend/produk/ajax_page/$1';
 $route['support/faq'] = 'frontend/support/faq';
 $route['support/contact-us'] = 'frontend/support/contactus';
 

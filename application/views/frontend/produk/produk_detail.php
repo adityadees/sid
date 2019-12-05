@@ -2,20 +2,20 @@
 	<div class="row">
 		<div class="col-lg-7">
 			<div class="carousel arrows-grey arrows-only arrows-visible dots-dark dots-inside" data-items="1">
-				<img src="<?= base_url('uploads/produk/songket/detail/1.jpeg')?>">
-				<img src="<?= base_url('uploads/produk/songket/detail/2.jpeg')?>">
+				<img src="<?= base_url('uploads/produk/'.$produk_grab[0]->produk_kategori."/".$produk_grab[0]->produk_cover)?>">
+				<!-- <img src="<?= base_url('uploads/produk/songket/detail/2.jpeg')?>"> -->
 			</div>
 		</div>
 		<div class="col-lg-5">
 			<div class="project-description">
-				<h2>Songket Merah</h2>
-				<p>Kain songket ini merupakan kerajinan asli yang berasal dari para pengrajin yang ada di Desa Lembung Jaya. Biasanya dipasarkan hingga keseluruh indonesia. Kain ini banyak diminati karena keunikan corak dan ciri khas tertentu</p>
+				<h2><?= $produk_grab[0]->produk_nama ?></h2>
+				<p><?= $produk_grab[0]->produk_desc ?></p>
 				<hr>
 				<div class="portfolio-attributes style1">
-					<div class="attribute"><strong>Nama</strong> Songket Merah</div>
-					<div class="attribute"><strong>Warna</strong> Merah Maron</div>
-					<div class="attribute"><strong>Bahan</strong> -</div>
-					<div class="attribute"><strong>Ukuran</strong> 2 Meter</div>
+					<div class="attribute"><strong>Nama</strong> <?= $produk_grab[0]->produk_nama ?><</div>
+					<div class="attribute"><strong>Warna</strong> <?= $produk_grab[0]->produk_warna ?><</div>
+					<div class="attribute"><strong>Bahan</strong> <?= $produk_grab[0]->produk_bahan ?></div>
+					<div class="attribute"><strong>Ukuran</strong> <?= $produk_grab[0]->produk_ukuran ?></div>
 				</div>
 				<hr>
 				<div class="portfolio-share m-t-20">

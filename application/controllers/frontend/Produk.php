@@ -16,6 +16,8 @@ class Produk extends MY_Controller{
 		$this->template($this->data, $this->module);
 	}
 	public function ajax_page(){
+		$uri = $this->uri->segment(3);
+		$this->data['produk_grab'] = $this->produk_m->get(['produk_id'=>$uri]);
 		$this->data['content']  = 'produk/produk_detail';
 		$this->load->view('frontend/produk/produk_detail',$this->data);
 	}

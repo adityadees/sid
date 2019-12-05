@@ -6,7 +6,7 @@
 				<a href="<?= base_url()?>">Home</a>
 			</li>
 			<li class="breadcrumb-item">
-				<a>Produk</a>
+                <a href="<?= base_url('dash/produk')?>">Produk</a>
 			</li>
 			<li class="breadcrumb-item active">
 				<strong><?= $title; ?></strong>

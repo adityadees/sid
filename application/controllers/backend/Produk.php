@@ -37,8 +37,16 @@ class Produk extends MY_Controller{
 	public function detail(){
 		$uri = $this->uri->segment(4);
 		$this->data['produk_grab'] = $this->produk_m->get(['produk_id'=>$uri]);
-		$this->data['title']    = 'Tambah Produk';
+		$this->data['title']    = 'Detail Produk';
 		$this->data['content']  = 'produk/detail';
+		$this->template($this->data, $this->module);
+	}
+
+	public function edit(){
+		$uri = $this->uri->segment(4);
+		$this->data['produk_grab'] = $this->produk_m->get(['produk_id'=>$uri]);
+		$this->data['title']    = 'Edit Produk';
+		$this->data['content']  = 'produk/edit';
 		$this->template($this->data, $this->module);
 	}
 
@@ -49,7 +57,7 @@ class Produk extends MY_Controller{
 		$bahan = $this->post('bahan');
 		$ukuran = $this->post('ukuran');
 		$isi = $this->post('isi');
-		$upspp = $this->go_upload('filefoto', 'uploads/produk', 'jpeg|jpg|png', TRUE);
+		$upspp = $this->go_upload('filefoto', 'uploads/produk/'.$kategori, 'jpeg|jpg|png', TRUE);
 		if($upspp['status'] != 'OK'){
 			$this->flashmsg($upspp['response'], 'error');
 			redirect('dash/produk');
@@ -79,38 +87,43 @@ class Produk extends MY_Controller{
 	}
 
 
-	public function edit(){
-		$id = $this->post('id');
-		$judul = $this->post('judul');
-		$desk = $this->post('desk');
+	public function update(){
+		$ids = $this->post('ids');
+		$nama = $this->post('nama');
+		$kategori = $this->post('kategori');
+		$warna = $this->post('warna');
+		$bahan = $this->post('bahan');
+		$ukuran = $this->post('ukuran');
+		$isi = $this->post('isi');
 		$oldimg = $this->post('oldimg');
 
 		if ($_FILES['filefoto']['name'] == '') {
-			$dslide = [ 
-				'produk_judul'	=> $judul,
-				'produk_deskripsi'	=> $desk,
-			];
+			$newimg = $oldimg;
 		} else {
-			if(file_exists('assets/images/produk/'.$oldimg)) {
-				unlink('assets/images/produk/'.$oldimg);
-			}
-
-			$upspp = $this->go_upload('filefoto', 'assets/images/produk', 'jpeg|jpg|png', TRUE);
+			$upspp = $this->go_upload('filefoto', 'uploads/produk/'.$kategori, 'jpeg|jpg|png', TRUE);
 			if($upspp['status'] != 'OK'){
 				$this->flashmsg($upspp['response'], 'error');
 				redirect('dash/produk');
 			}
+			$newimg = $upspp['filename'];
 
-			$dslide = [ 
-				'produk_judul'	=> $judul,
-				'produk_deskripsi'	=> $desk,
-				'produk_img'	=> $upspp['filename'],
-			];
+			if(file_exists('uploads/produk/'.$kategori.'/'.$oldimg)) {
+				unlink('uploads/produk/'.$kategori.'/'.$oldimg);
+			}
 		}
 
+		$dups = [ 
+			'produk_nama'	=> $nama,
+			'produk_kategori'	=> $kategori,
+			'produk_warna'	=> $warna,
+			'produk_bahan'	=> $bahan,
+			'produk_ukuran'	=> $ukuran,
+			'produk_desc'	=> $isi,
+			'produk_cover'	=> $newimg,
+		];
 
 		$this->db->trans_begin();
-		$ck = $this->produk_m->update($id,$dslide);
+		$ck = $this->produk_m->update($ids,$dups);
 		$this->db->trans_complete();
 		if ($this->db->trans_status() === FALSE){
 			$this->db->trans_rollback();

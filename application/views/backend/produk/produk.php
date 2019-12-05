@@ -16,14 +16,15 @@
 </div>
 
 <div class="wrapper wrapper-content animated fadeInRight">
+    <?php echo $this->session->flashdata('msg');?>
     <div class="row">
         <?php foreach($produk_grab as $i) :?>
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div class="ibox">
                     <div class="ibox-content product-box active">
 
                         <div class="product-imitation">
-                            <img src="<?= base_url()?>uploads/produk/<?= $i->produk_cover;?>" class="img-thumbnail" style="max-height: 150px"/>
+                            <img src="<?= base_url('uploads/produk/'.$i->produk_kategori."/".$i->produk_cover)?>" class="no-padding img-thumbnail" style="max-height: 150px"/>
                         </div>
                         <div class="product-desc">
                             <small class="text-muted"><?= ucfirst($i->produk_kategori)?></small>
@@ -33,11 +34,16 @@
 
 
                             <div class="small m-t-xs">
-                                <?= $i->produk_desc;?>
+                                <?php 
+                                $long_string = $i->produk_desc;
+                                $limited_string = limit_words($long_string, 24);
+                                echo $limited_string;
+                                ?> 
                             </div>
                             <div class="m-t text-righ">
-
-                                <a href="<?= base_url('dash/produk/detail/'.$i->produk_id)?>" class="btn btn-xs btn-outline btn-primary">Info <i class="fa fa-long-arrow-right"></i> </a>
+                                <a href="<?= base_url('dash/produk/detail/'.$i->produk_id)?>" class="btn btn-xs btn-outline btn-primary">View More <i class="fa fa-long-arrow-right"></i> </a>
+                                <a href="javascript:;" data-target="#produk_delete" data-toggle="modal" onclick="fdelete('<?= $i->produk_id?>','<?= $i->produk_nama ?>','<?= $i->produk_cover?>')" class="pull-right btn btn-xs btn-outline btn-danger"><i class="fa fa-trash"></i> </a>
+                                <a href="<?= base_url('dash/produk/edit/'.$i->produk_id)?>" class="mr-2 pull-right btn btn-xs btn-outline btn-warning"><i class="fa fa-pencil"></i> </a>
                             </div>
                         </div>
                     </div>
@@ -49,38 +55,6 @@
 
 
     </div>
-    <div class="row">
-        <div class="col-md-3">
-            <div class="ibox">
-                <div class="ibox-content product-box">
-
-                    <div class="product-imitation">
-                        [ INFO ]
-                    </div>
-                    <div class="product-desc">
-                        <span class="product-price">
-                            $10
-                        </span>
-                        <small class="text-muted">Category</small>
-                        <a href="#" class="product-name"> Product</a>
-
-
-
-                        <div class="small m-t-xs">
-                            Many desktop publishing packages and web page editors now.
-                        </div>
-                        <div class="m-t text-righ">
-
-                            <a href="#" class="btn btn-xs btn-outline btn-primary">Info <i class="fa fa-long-arrow-right"></i> </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-
     <div class="modal inmodal" id="produk_add" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <form action="<?= base_url() ?>index.php/backend/produk/create" method="POST" accept-charset="utf-8" enctype="multipart/form-data">

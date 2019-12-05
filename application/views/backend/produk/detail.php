@@ -1,15 +1,15 @@
 <div class="row wrapper border-bottom white-bg page-heading">
     <div class="col-lg-10">
-        <h2>E-commerce product detail</h2>
+        <h2><?= $title; ?></h2>
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
-                <a href="index.html">Home</a>
+                <a href="<?= base_url()?>">Home</a>
             </li>
             <li class="breadcrumb-item">
-                <a>E-commerce</a>
+                <a href="<?= base_url('dash/produk')?>">Produk</a>
             </li>
             <li class="breadcrumb-item active">
-                <strong>Product detail</strong>
+                <strong><?= $title; ?></strong>
             </li>
         </ol>
     </div>
@@ -54,33 +54,15 @@
                      </div>
                      <dl class="small m-t-md">
                         <dt>Warna</dt>
-                        <dd><?= $produk_grab[0]->produk_warna?></dd>
+                        <dd><?= ($produk_grab[0]->produk_warna != '') ? $produk_grab[0]->produk_warna : '-'; ?></dd>
                         <dt>Ukuran</dt>
-                        <dd><?= $produk_grab[0]->produk_ukuran?></dd>
+                        <dd><?= ($produk_grab[0]->produk_ukuran != '') ? $produk_grab[0]->produk_ukuran : '-'; ?></dd>
                         <dt>Bahan</dt>
-                        <dd><?= $produk_grab[0]->produk_bahan?></dd>
+                        <dd><?= ($produk_grab[0]->produk_bahan != '') ? $produk_grab[0]->produk_bahan : '-'; ?></dd>
                     </dl>
                     <hr>
-
-                    <div>
-                        <div class="btn-group">
-                            <button class="btn btn-primary btn-sm"><i class="fa fa-cart-plus"></i> Add to cart</button>
-                            <button class="btn btn-white btn-sm"><i class="fa fa-star"></i> Add to wishlist </button>
-                            <button class="btn btn-white btn-sm"><i class="fa fa-envelope"></i> Contact with author </button>
-                        </div>
-                    </div>
-
-
-
                 </div>
             </div>
-
-        </div>
-        <div class="ibox-footer">
-            <span class="float-right">
-                Full stock - <i class="fa fa-clock-o"></i> 14.04.2016 10:04 pm
-            </span>
-            The generated Lorem Ipsum is therefore always free
         </div>
     </div>
 

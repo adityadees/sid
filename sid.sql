@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.9
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 03, 2019 at 06:16 AM
--- Server version: 10.1.31-MariaDB
--- PHP Version: 7.2.3
+-- Generation Time: Dec 04, 2019 at 10:01 AM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 7.3.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -163,8 +163,7 @@ CREATE TABLE `produk` (
 --
 
 INSERT INTO `produk` (`produk_id`, `produk_nama`, `produk_kategori`, `produk_warna`, `produk_bahan`, `produk_ukuran`, `produk_desc`, `produk_cover`) VALUES
-(3, 'Songket Merah', 'songket', 'merah', '-', '1 M', 'Kain songket ini merupakan kerajinan asli yang berasal dari para pengrajin yang ada di Desa Lembung Jaya. Biasanya dipasarkan hingga keseluruh indonesia. Kain ini banyak diminati karena keunikan corak dan ciri khas tertentu', '6.jpg'),
-(4, 'Songket Merah', 'songket', 'merah', '-', '1 M', 'Kain songket ini merupakan kerajinan asli yang berasal dari para pengrajin yang ada di Desa Lembung Jaya. Biasanya dipasarkan hingga keseluruh indonesia. Kain ini banyak diminati karena keunikan corak dan ciri khas tertentu', 'unnamed.jpg'),
+(4, 'Songket Merah', 'songket', 'merah', '-', '1 M', 'Kain songket ini merupakan kerajinan asli yang berasal dari para pengrajin yang ada di Desa Lembung Jaya. Biasanya dipasarkan hingga keseluruh indonesia. Kain ini banyak diminati karena keunikan corak dan ciri khas tertentus', 'b67470b3404dfe981bf1be9913c4f93d.jpg'),
 (5, 'Songket Merah', 'pisau', 'merah', '-', '1 M', 'Kain songket ini merupakan kerajinan asli yang berasal dari para pengrajin yang ada di Desa Lembung Jaya. Biasanya dipasarkan hingga keseluruh indonesia. Kain ini banyak diminati karena keunikan corak dan ciri khas tertentu', '2.jpg'),
 (6, 'Songket Merah', 'pisau', 'merah', '-', '1 M', 'Kain songket ini merupakan kerajinan asli yang berasal dari para pengrajin yang ada di Desa Lembung Jaya. Biasanya dipasarkan hingga keseluruh indonesia. Kain ini banyak diminati karena keunikan corak dan ciri khas tertentu', '3.jpg'),
 (7, 'Songket Merah', 'pisau', 'merah', '-', '1 M', 'Kain songket ini merupakan kerajinan asli yang berasal dari para pengrajin yang ada di Desa Lembung Jaya. Biasanya dipasarkan hingga keseluruh indonesia. Kain ini banyak diminati karena keunikan corak dan ciri khas tertentu', '4.jpg'),
@@ -212,7 +211,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `user_username`, `user_password`, `user_role`, `last_login`) VALUES
-(1, 'adityads', '202cb962ac59075b964b07152d234b70', 'admin', '2019-12-03 05:14:27'),
+(1, 'adityads', '202cb962ac59075b964b07152d234b70', 'admin', '2019-12-04 08:10:48'),
 (30, 'rifai', '97db1846570837fce6ff62a408f1c26a', 'admin', '2019-08-01 15:05:23'),
 (31, 'naufal', '202cb962ac59075b964b07152d234b70', 'mahasiswa', '2019-09-05 13:48:28'),
 (32, 'dinitsyh', '86be836a5e5acf4fcbc33ab55f4e2f47', 'mahasiswa', '2019-07-29 14:15:40'),

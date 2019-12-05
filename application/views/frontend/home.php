@@ -194,18 +194,18 @@
 								<div class="row">
 									<div class="col-lg-6">
 										<div class="shop-category-box">
-											<a href="#"><img src="<?= base_url('uploads/produk/songket/4.jpg')?>" alt="">
+											<a href="javascript:;"><img src="<?= base_url('uploads/produk/songket/4.jpg')?>" alt="">
 												<div class="shop-category-box-title text-center">
-													<h6>Kaing Songket</h6><small>64 Produk</small>
+													<h6>Kaing Songket</h6><small><?= count($count_songket) ?> Jenis</small>
 												</div>
 											</a>
 										</div>
 									</div>
 									<div class="col-lg-6">
 										<div class="shop-category-box">
-											<a href="#"><img src="<?= base_url('uploads/produk/pisau/4.jpg')?>" alt="">
+											<a href="javascript:;"><img src="<?= base_url('uploads/produk/pisau/4.jpg')?>" alt="">
 												<div class="shop-category-box-title text-center">
-													<h6>Pisau</h6><small>36 Produk</small>
+													<h6>Pisau</h6><small><?= count($count_pisau) ?> Jenis</small>
 												</div>
 											</a>
 										</div>

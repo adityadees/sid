@@ -35,13 +35,13 @@
                     <a href="<?= base_url()?>index.php/dash/galeri"><i class="fa fa-image"></i> <span class="nav-label">Galeri</span></a>
                 </li>
 
-                <li <?php if($title=='Produk'){echo "class='active'"; } else {}?>>
+                <li <?php if($title=='Produk' || $title=='Tambah Produk' || $title=='Edit Produk' || $title=='Detail Produk'){echo "class='active'"; } else {}?>>
                     <a href="<?= base_url()?>index.php/dash/produk"><i class="fa fa-cube"></i> <span class="nav-label">Produk</span></a>
                 </li>
 
-                <li <?php if($title=='User'){echo "class='active'"; } else {}?>>
+                <!-- <li <?php if($title=='User'){echo "class='active'"; } else {}?>>
                     <a href="<?= base_url()?>index.php/dash/user"><i class="fa fa-user"></i> <span class="nav-label">User</span></a>
-                </li>
+                </li> -->
 
             <?php } else { ?>
 

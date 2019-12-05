@@ -34,7 +34,7 @@
 						</div>
 						<div class="portfolio-description">
 							<a title="<?= $i->produk_nama ?>" data-lightbox="image" href="<?= base_url('uploads/produk/'.$i->produk_kategori."/".$i->produk_cover)?>"><i class="fa fa-plus"></i></a>
-							<a data-lightbox="ajax" href="<?= base_url('p/detail')?>"><i class="fa fa-expand"></i></a>
+							<a data-lightbox="ajax" href="<?= base_url('p/detail/'.$i->produk_id)?>"><i class="fa fa-expand"></i></a>
 						</div>
 					</div>
 				</div>
